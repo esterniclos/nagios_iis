@@ -13,7 +13,11 @@ Drop the checks into C:\Program Files\NSClient++\scripts
 Write a wrapper function in ncslient.ini
 
     [/settings/external scripts/scripts]
-          check_iis8_app_pool_state = C:\Program Files\NSClient++\scripts\check_iis8_app_pool_state.ps1 $ARG1$
+         # Requires allow arguments=true
+          check_iis8_app_pool_state = powershell.exe scripts\check_iis8_app_pool_state.ps1 $ARG1$
+          
+          check_default_app_pool = powershell.exe scripts\check_iis8_app_pool_state.ps1 DefaultAppPool
+
 
 To test your command in nsclient, use 
 
