@@ -17,4 +17,4 @@ Write a wrapper function in ncslient.ini
 
 To test your command in nsclient, use 
 
-          C:\Program Files\NSClient++\nscp.exe
+          C:\Program Files\NSClient++\nscp.exe test
