@@ -17,6 +17,10 @@ Write a wrapper function in ncslient.ini
           check_iis8_app_pool_state = powershell.exe scripts\check_iis8_app_pool_state.ps1 $ARG1$
           
           check_default_app_pool = powershell.exe scripts\check_iis8_app_pool_state.ps1 DefaultAppPool
+          
+          # Requires allow arguments=true
+          check_iis8_website = powershell.exe scripts\check_iis8_site.ps1 $ARG1$
+          check_default_website = powershell.exe scripts\check_iis8_site.ps1 'Default Web Site'
 
 
 To test your command in nsclient, use 
