@@ -2,9 +2,9 @@
 Ester Niclos Ferreras
 
 OK	UP
-WARNING	UP or DOWN/UNREACHABLE*
-CRITICAL	DOWN/UNREACHABLE
-UNKNOWN	DOWN/UNREACHABLE
+WARNING	
+CRITICAL	Stopped
+UNKNOWN	not found
 
 
 #>
@@ -33,19 +33,29 @@ Set-Variable UNKNOWN 3 -option Constant
 
 $servermanager = [Microsoft.Web.Administration.ServerManager]::OpenRemote("localhost")
 $apppools = $servermanager.ApplicationPools["$ApplicationPool"]
-$status = $apppools.state
 
 
 $iis=get-itemproperty HKLM:\SOFTWARE\Microsoft\InetStp\  | select setupstring
 
+# Nagios output
+$resultstring='IISPOOL UNKNOWN ' + $ApplicationPool + ' ' + $status +' ; ' + $iis.SETUPSTRING + ' ' 
+$exit_code = $UNKNOWN
 
-  $resultstring='IISPOOL UNKNOWN ' + $ApplicationPool + ' ' + $status +' ; ' + $iis.SETUPSTRING + ' ' 
-  $exit_code = $UNKNOWN
-  
+
+if ($apppools -ne $null)  {
+
+  $status = $apppools.state
+    
   if ($status -eq 'Started')
-{
-   $resultstring='IISPOOL OK '+  $ApplicationPool + ' ' + $status +' ; ' + $iis.SETUPSTRING + ' ' 
-   $exit_code = $OK
+	{
+		$resultstring='IISPOOL OK '+  $ApplicationPool + ' ' + $status +' ; ' + $iis.SETUPSTRING + ' ' 
+		$exit_code = $OK
+	}
+	else
+	{
+   $resultstring='IISPOOL CRITICAL '+  $ApplicationPool + ' ' + $status +' ; ' + $iis.SETUPSTRING + ' ' 
+   $exit_code = $CRITICAL
+	}
 }
 
 Write-Host $resultstring
