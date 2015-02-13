@@ -21,6 +21,9 @@ Write a wrapper function in ncslient.ini
           # Requires allow arguments=true
           check_iis8_website = powershell.exe scripts\check_iis8_site.ps1 $ARG1$
           check_default_website = powershell.exe scripts\check_iis8_site.ps1 'Default Web Site'
+          
+          
+          check_connections = powershell.exe scripts\check_iis8_connections.ps1 localhost 'Default Web Site' 3000 4000
 
 
 To test your command in nsclient, use 
