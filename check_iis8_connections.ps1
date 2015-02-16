@@ -64,7 +64,7 @@ if ($counter -ne $null) {
 		$exit_code = $OK
 	}
     	
-	$perf_data= 'connections=' + $counter.CounterSamples.CookedValue
+	$perf_data= "connections=" + $connections + ';' + $warning_value + ';' + $critical_value + "; "
 	$resultstring= "$status_str  |  $perf_data " 
 }
 
