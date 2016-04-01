@@ -1,0 +1,17 @@
+
+IISAdmin_Cmdlets
+
+Looks like old invokation won't be working in windows 2016
+
+[Microsoft.Web.Administration.ServerManager]::OpenRemote("localhost")
+
+New commandlets:
+
+Get-IISAppPool
+Get-IISSite
+
+More info:
+
+https://technet.microsoft.com/en-us/library/mt270166.aspx
+
+
