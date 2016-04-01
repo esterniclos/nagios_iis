@@ -31,3 +31,7 @@ To test your command in nsclient, use
 
           C:\Program Files\NSClient++\nscp.exe test
 
+To test your command in powershell, first import module
+
+    Import-Module WebAdministration
+	check_iis8_connections.ps1 localhost 'Default Web Site' 3000 4000
