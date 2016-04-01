@@ -1,6 +1,6 @@
 # nagios_iis
 
-Checks for nagios iis v8
+Nagios checks for microsoft iis v8 and 8.5
 
 ## Requirements:
 
